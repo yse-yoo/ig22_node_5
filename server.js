@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 })
 
+//サーバに接続(connection)したら
+io.on('connection', (socket) => {
+    socket.on('auth', (user) => {
+        console.log(user)
+    })
+})
+
 http.listen(port, host, () => {
     console.log('http://' + host + ':' + port)
 })

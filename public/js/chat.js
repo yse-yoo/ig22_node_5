@@ -114,13 +114,25 @@ $(() => {
         loginArea.fadeIn(FADE_TIME)
     })()
 
+    //サーバに接続（connect）する
+    let socket = io.connect(url)
+
     $('#login').on('click', () => {
         let name = inputName.val()
         let icon = $('input[name=icon]:checked').val()
         if (name && icon) {
             loginArea.hide()
             chatArea.fadeIn(FADE_TIME)
+            //認証（auth）
+            socket.emit('auth', {
+                name: name,
+                icon: icon,
+            })
         }
+    })
+
+    $('.stamp').on('click', () => {
+        stampList.toggle()
     })
 
     $('#logout').on('click', () => {
