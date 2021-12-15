@@ -8,12 +8,13 @@ npm init -y
 npm i express ejs dotenv socket.io uuid
 ```
 
-## GoogleDriveからダウンロード
+## フォルダ作成
+フォルダの中身は GitHub からダウンロード
 ```
-node_5_samples
-  + public/
-  + views/
+node_5
+  public/
+  views/
 ```
-## ファイルを作成
+## ファイル作成
 - server.js
 - .env
