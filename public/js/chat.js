@@ -122,4 +122,11 @@ $(() => {
             chatArea.fadeIn(FADE_TIME)
         }
     })
+
+    $('#logout').on('click', () => {
+        chatArea.hide()
+        loginArea.fadeIn(FADE_TIME)
+    })
+
+
 })
