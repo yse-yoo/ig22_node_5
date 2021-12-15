@@ -1,0 +1,60 @@
+img {
+    margin: 6px;    
+}
+
+.icon {
+    width: 32px;
+}
+
+.stamp {
+    width: 100px;
+}
+
+.stamp {
+    width: 150px;
+}
+
+.balloon-left {
+    position: relative;
+    display: inline-block;
+    padding: 7px 10px;
+    width: 90%;
+    border: solid 3px #eaeff4;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.balloon-left:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 5%;
+    margin-left: -15px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #eaeff4;
+    z-index: 2;
+}
+
+.balloon-right {
+    position: relative;
+    display: inline-block;
+    padding: 7px 10px;
+    left: 10%;
+    width: 90%;
+    border: solid 3px #65c2d3;
+    background: #65c2d3;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.balloon-right:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 95%;
+    margin-left: -15px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #65c2d3;
+    z-index: 2;
+}
