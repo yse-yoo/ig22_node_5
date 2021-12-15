@@ -125,6 +125,12 @@ $(() => {
             updateUserList()
         }
     })
+    socket.on('user_joined', (data) => {
+        users = data.users
+        let message = data.user.name + 'が入室しました'
+        addMessage(message)
+        updateUserList()
+    })
 
     $('#login').on('click', () => {
         let name = inputName.val()

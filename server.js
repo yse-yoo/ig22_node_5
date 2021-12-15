@@ -33,6 +33,8 @@ io.on('connection', (socket) => {
         //データをクライアントにかえす
         let data = { user: user, users: users }
         socket.emit('logined', data)
+        //Boradcast でかえす
+        socket.broadcast.emit('user_joined', data)
     })
 })
 
