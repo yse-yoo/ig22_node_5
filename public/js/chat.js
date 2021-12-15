@@ -132,18 +132,32 @@ $(() => {
         updateUserList()
     })
 
+    //message 受信
+    socket.on('message', (data) => {
+        createChatMessage(data)
+    })
+
     $('#login').on('click', () => {
         let name = inputName.val()
         let icon = $('input[name=icon]:checked').val()
         if (name && icon) {
             loginArea.hide()
             chatArea.fadeIn(FADE_TIME)
-            //認証（auth）
             socket.emit('auth', {
                 name: name,
                 icon: icon,
             })
         }
+    })
+
+    $('#send').on('click', () => {
+        if (!user.token) return
+        if (!message.val()) return
+        socket.emit('message', {
+            user: user,
+            message: message.val(),
+        })
+        message.val('')
     })
 
     $('.stamp').on('click', () => {

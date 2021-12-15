@@ -21,6 +21,11 @@ let users = {}
 
 //サーバに接続(connection)したら
 io.on('connection', (socket) => {
+    socket.on('message', (data) => {
+        data.datetime = Date.now()
+        io.emit('message', data)
+    })
+
     socket.on('auth', (user) => {
         console.log(user)
         //Token がないときは終了
