@@ -16,10 +16,23 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 })
 
+//ユーザリスト
+let users = {}
+
 //サーバに接続(connection)したら
 io.on('connection', (socket) => {
     socket.on('auth', (user) => {
         console.log(user)
+        //Token がないときは終了
+        if (user.token) return
+        //Tokenを作成
+        user.token = uuidv4()
+        //ユーザリストに追加
+        users[socket.id] = user
+
+        //データをクライアントにかえす
+        let data = { user: user, users: users }
+        socket.emit('logined', data)
     })
 })
 

@@ -117,6 +117,15 @@ $(() => {
     //サーバに接続（connect）する
     let socket = io.connect(url)
 
+    socket.on('logined', (data) => {
+        if (data.user) {
+            user = data.user
+            users = data.users
+            userName.text(user.name)
+            updateUserList()
+        }
+    })
+
     $('#login').on('click', () => {
         let name = inputName.val()
         let icon = $('input[name=icon]:checked').val()
