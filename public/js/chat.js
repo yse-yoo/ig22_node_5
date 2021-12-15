@@ -104,5 +104,22 @@ $(() => {
         return (data.user.token == user.token)
     }
 
+    //初期化
+    (() => {
+        createIcons()
+        createStamps()
+        loginArea.hide()
+        chatArea.hide()
+        stampList.hide()
+        loginArea.fadeIn(FADE_TIME)
+    })()
 
+    $('#login').on('click', () => {
+        let name = inputName.val()
+        let icon = $('input[name=icon]:checked').val()
+        if (name && icon) {
+            loginArea.hide()
+            chatArea.fadeIn(FADE_TIME)
+        }
+    })
 })
