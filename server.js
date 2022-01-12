@@ -26,6 +26,22 @@ io.on('connection', (socket) => {
         io.emit('message', data)
     })
 
+    socket.on('logout', () => {
+        console.log('logout')
+
+        //ユーザを取得
+        var user = users[socket.id];
+
+        //ユーザリストから削除
+        delete users[socket.id]
+
+        //ログアウトしたユーザ以外に送信
+        socket.broadcast.emit('user_left', {
+            user: user,
+            users: users,
+        })
+    })
+
     socket.on('auth', (user) => {
         console.log(user)
         //Token がないときは終了

@@ -131,6 +131,12 @@ $(() => {
         addMessage(message)
         updateUserList()
     })
+    socket.on('user_left', (data) => {
+        users = data.users
+        let message = data.user.name + 'が退出しました'
+        addMessage(message)
+        updateUserList()
+    })
 
     //message 受信
     socket.on('message', (data) => {
@@ -165,6 +171,8 @@ $(() => {
     })
 
     $('#logout').on('click', () => {
+        socket.emit('logout')
+        user = {}
         chatArea.hide()
         loginArea.fadeIn(FADE_TIME)
     })
