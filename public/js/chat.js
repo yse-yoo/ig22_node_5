@@ -185,8 +185,13 @@ $(() => {
             //画像をエンコーディング
             const base64 = canvas.toDataURL(mime_type)
             const data = { user: user, image: base64}
+
             socket.emit('upload_stamp', data)
         }
+    })
+
+    socket.on('load_stamp', (data) => {
+        createChatImage(data, { width: STAMP_WIDTH})
     })
 
     $('#logout').on('click', () => {

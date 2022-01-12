@@ -26,6 +26,11 @@ io.on('connection', (socket) => {
         io.emit('message', data)
     })
 
+    socket.on('upload_stamp', (data) => {
+        data.datetime = Date.now()
+        io.emit('load_stamp', data)
+    })
+
     socket.on('logout', () => {
         console.log('logout')
 
